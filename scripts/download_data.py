@@ -35,7 +35,6 @@ def main():
 	
 	except IOError as e:
 		logging.error(e)
-		sys.exit()
 	
 	search_headers = {
 		'Authorization': 'Bearer {}'.format(access_token)
@@ -53,6 +52,15 @@ def main():
 	search_resp = requests.get(search_url, headers=search_headers, params=search_params)
 	
 	tweet_data = search_resp.json()
+
+	try:
+		if len(tweet_data['statuses']) == 0:
+			with open(current_raw_tweet_file_path,'wt') as f:
+				f.write('')
+			sys.exit(0)
+	except IOError as e:
+		logging.error(1)
+
 	
 	
 	try:
