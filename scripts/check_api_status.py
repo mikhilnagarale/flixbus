@@ -22,44 +22,43 @@ file_path = config['DEFAULT']['data_dir']+'/'+target_file_name
 
 
 def main():
-        try:
-                with open(access_token_file_path,'rt') as f:
-                        access_token=f.read()
-        except IOError as e:
-                logging.error(str(e))
-                sys.exit()
-
-        try:
-                with open(current_raw_tweet_file_path,'wt') as f:
-                        f.write(target_file_name)
-
-        except IOError as e:
-                logging.error(e)
-
-        search_headers = {
-                'Authorization': 'Bearer {}'.format(access_token)
-        }
-
-        search_params = {
-        'q': '#FlixBus',
-        'result_type': 'recent',
-        'count': 1,
-        'include_entities' : 'true'
-        }
-
-        search_url = '{}1.1/search/tweets.json'.format(config['DEFAULT']['base_url'])
-
-        search_resp = requests.get(search_url, headers=search_headers, params=search_params)
+	try:
+		with open(access_token_file_path,'rt') as f:
+			access_token=f.read()
+	except IOError as e:
+		logging.error(str(e))
+		sys.exit()
 	
-        if (search_resp.status_code=='200'):
-	        sys.exit(0)
-        else:
-                sys.exit(1)
+	try:
+		with open(current_raw_tweet_file_path,'wt') as f:
+			f.write(target_file_name)
+	
+	except IOError as e:
+		logging.error(e)
+	
+	search_headers = {
+		'Authorization': 'Bearer {}'.format(access_token)
+	}
+	
+	search_params = {
+	'q': '#FlixBus',
+	'result_type': 'recent',
+	'count': 1,
+	'include_entities' : 'true'
+	}
+	
+	search_url = '{}1.1/search/tweets.json'.format(config['DEFAULT']['base_url'])
+	
+	search_resp = requests.get(search_url, headers=search_headers, params=search_params)
 
+	if search_resp.status_code==200:
+		sys.exit(0)
+	else:
+		sys.exit(1)
+	
 
 if __name__ == "__main__":
-        main()
-
+	main()
 
 
 
