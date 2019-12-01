@@ -52,7 +52,7 @@ def main():
 	search_resp = requests.get(search_url, headers=search_headers, params=search_params)
 
 	if search_resp.status_code==200:
-		sys.exit(0)
+		logging.info('API Working!')
 	else:
 		sys.exit(1)
 	
