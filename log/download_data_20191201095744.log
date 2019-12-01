@@ -1,0 +1,14 @@
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true HTTP/1.1" 200 21544
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true&max_id=1200352941628153855&since_id=0 HTTP/1.1" 200 16929
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true&max_id=1199445863401230335&since_id=0 HTTP/1.1" 200 17249
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true&max_id=1198580169751060480&since_id=0 HTTP/1.1" 200 18812
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true&max_id=1197996726688215039&since_id=0 HTTP/1.1" 200 18592
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true&max_id=1197844089770856447&since_id=0 HTTP/1.1" 200 7252
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.twitter.com:443
+DEBUG:urllib3.connectionpool:https://api.twitter.com:443 "GET /1.1/search/tweets.json?q=%23FlixBus&result_type=recent&count=50&include_entities=true&max_id=1197772812846546944&since_id=0 HTTP/1.1" 200 208
