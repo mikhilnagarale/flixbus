@@ -67,6 +67,7 @@ def main():
 		with open(file_path,'wt') as f:
 			for line in tweet_data['statuses']:
 				f.write(json.dumps(line)+"\n")
+
 	except IOError as e:
 		logging.error(e)
 	
@@ -78,13 +79,13 @@ def main():
 		search_params['since_id'] = since_id
 		search_resp = requests.get(search_url, headers=search_headers, params=search_params)
 		tweet_data = search_resp.json()
-	try:
-		with open(file_path,'at') as f:
-			for line in tweet_data['statuses']:
-				f.write(json.dumps(line)+"\n")
-	except IOError as e:
-		logging.error(str(e))
-		sys.exit()
+		try:
+			with open(file_path,'at') as f:
+				for line in tweet_data['statuses']:
+					f.write(json.dumps(line)+"\n")
+		except IOError as e:
+			logging.error(str(e))
+			sys.exit()
 
 if __name__ == "__main__":
 	main()
