@@ -8,3 +8,4 @@ data_dir = /home/airflow/flixbus/data
 base_url = https://api.twitter.com/
 current_parsed_tweet_file_name = parsed_tweet.txt
 hdfs_tmp = /tmp
+current_processed_partition = processed_partition.txt
