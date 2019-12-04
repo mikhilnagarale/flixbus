@@ -13,7 +13,7 @@ import transform_tweets
 import get_access_token 
 import check_api_status
 
-current_date = datetime.now().strftime("%Y%m%d")
+current_time = datetime.now().strftime("%Y%m%d%H%M%S")
 
 # default_args are the default arguments applied to the DAG and all inherited tasks
 DAG_DEFAULT_ARGS = {
@@ -38,7 +38,7 @@ with DAG('flixbus_tweets_dag_v2', start_date=datetime(2018, 10, 1), schedule_int
 	download_tweets_task = PythonOperator(task_id='download_tweets_task',python_callable=download_data.main)
 	transform_tweets_task = PythonOperator(task_id='transform_tweets_task',python_callable=transform_tweets.main)
 	copy_to_hdfs_task = BashOperator(task_id='copy_to_hdfs_task', bash_command="hadoop fs -put -f "+parsed_file_path+" /tmp")
-	load_hive_table_task = HiveOperator(task_id='load_hive_table_task',hql='LOAD DATA INPATH \'{}\' into table flixbus_tweets PARTITION(load_date=\'{}\')'.format(hdfs_parsed_file_path,current_date))
+	load_hive_table_task = HiveOperator(task_id='load_hive_table_task',hql='LOAD DATA INPATH \'{}\' into table flixbus_tweets PARTITION(load_timestamp=\'{}\')'.format(hdfs_parsed_file_path,current_time))
 
 	check_api_status_task >> get_access_token_task >> download_tweets_task >> transform_tweets_task >> copy_to_hdfs_task >> load_hive_table_task
 	

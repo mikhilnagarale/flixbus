@@ -7,5 +7,5 @@ tweet_hashtags string,
 No_of_tweets string,
 is_retweet string
 )
-PARTITIONED BY (load_date string)
+PARTITIONED BY (load_timestamp string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|';
