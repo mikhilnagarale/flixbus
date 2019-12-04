@@ -23,6 +23,21 @@ processed_date=''
 processed_partition_file_path = '{}/{}'.format(config['DEFAULT']['conf_dir'],config['DEFAULT']['processed_partition_file_name'])
 
 
+'''
+#Adding changes to download data for specific date range.
+#Note- This will only work in tweeter premium search API (ref: https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search)
+#In current script I've used standard search API which don't have parameters for date range search(it has until which is equivalent to toDate which is insufficient for range query)
+
+fromDate = ''
+toDate = ''
+if len(sys.argv[:]) == 2:
+	fromDate=sys.argv[1]
+if len(sys.argv[:]) == 3:
+	fromDate = sys.argv[1]
+	toDate = sys.argv[2]
+'''
+
+
 def main():
 	try:
 		with open(access_token_file_path,'rt') as f:
@@ -49,7 +64,12 @@ def main():
 	'include_entities' : 'true'
 	}
 	
-	
+	#For date range tweet search (Note: Only for premium & enterprise API, ref:https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search)
+	'''
+	search_params['fromDate'] = fromDate
+	search_params['toDate'] = toDate
+	'''	
+
 	#Adding changes to set fromDate to previous processed date to fetch only last day data/after previously processed data.
 
 	try:
