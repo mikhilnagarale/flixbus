@@ -10,7 +10,7 @@ import logging
 import datetime
 
 
-ct=datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+ct=datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S")
 logfile_name = '{}_{}{}'.format(sys.argv[0].split('.')[0],ct,'.log')
 log_file_path = '{}/{}'.format(config['DEFAULT']['log_dir'],logfile_name)
 logging.basicConfig(level=logging.DEBUG,filename=log_file_path,filemode='a')
